@@ -2,8 +2,12 @@ import React from 'react';
 import {SearchIcon, FlagIcon, PlayIcon, ShoppingCartIcon} from "@heroicons/react/outline";
 import HeaderIcon from "./HeaderIcon";
 import {HomeIcon, UserGroupIcon, ViewGridIcon, ChatIcon, BellIcon, ChevronDownIcon} from "@heroicons/react/solid";
+import {signOut, useSession} from "next-auth/client";
+import Image from "next/image";
 
 function Header() {
+  const [session] = useSession();
+
   return (
     <div className="flex items-center p-2 top-0 z-50 bg-white sticky lg:px-5 shadow-md">
       <div className="flex items-center">
@@ -33,8 +37,9 @@ function Header() {
       </div>
 
       <div className="flex items-center sm:space-x-2 justify-end">
-        {/*<Image src="" />*/}
-        <p className="font-semibold pr-3 whitespace-nowrap">Riadh Khedhiri</p>
+        <Image onClick={signOut} className="rounded-full cursor-pointer" src={session.user.image} width={40} height={40}
+               layout={"fixed"} alt="Profile Photo"/>
+        <p className="font-semibold pr-3 whitespace-nowrap">{session.user.name}</p>
         <ViewGridIcon className="icon"/>
         <ChatIcon className="icon"/>
         <BellIcon className="icon"/>
