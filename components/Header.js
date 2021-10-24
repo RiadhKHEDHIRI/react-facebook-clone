@@ -39,7 +39,7 @@ function Header() {
       <div className="flex items-center sm:space-x-2 justify-end">
         <Image onClick={signOut} className="rounded-full cursor-pointer" src={session.user.image} width={40} height={40}
                layout={"fixed"} alt="Profile Photo"/>
-        <p className="font-semibold pr-3 whitespace-nowrap">{session.user.name}</p>
+        <p className="hidden md:inline-block pr-3 whitespace-nowrap">{session.user.name}</p>
         <ViewGridIcon className="icon"/>
         <ChatIcon className="icon"/>
         <BellIcon className="icon"/>
